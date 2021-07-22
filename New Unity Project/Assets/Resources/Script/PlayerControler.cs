@@ -6,6 +6,10 @@ public class PlayerControler : MonoBehaviour
 {
     public Rigidbody playerRigidbody;
     public float speed = 8f;
+    public void Die()
+    {
+        gameObject.SetActive(false);
+    }
 
     void Start()
     {
