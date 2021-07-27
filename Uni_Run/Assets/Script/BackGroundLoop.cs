@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BackGroundLoop : MonoBehaviour
 {
+    [SerializeField] BoxCollider2D backgroundCollider;
     private float width;
     // Start is called before the first frame update
     private void Awake()
     {
-        BoxCollider2D backgroundCollider = GetComponent<BoxCollider2D>();
         width = backgroundCollider.size.x;
     }
 

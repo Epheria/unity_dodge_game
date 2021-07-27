@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private bool isGrounded = false;
     private bool isDead = false;
 
+    private float time = 0f;
+
     private Rigidbody2D playerRigidbody;
     private Animator animator;
     private AudioSource playerAudio;
@@ -37,6 +39,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+
         if(isDead)
         {
             return;
@@ -53,6 +57,12 @@ public class Player : MonoBehaviour
             playerRigidbody.velocity = playerRigidbody.velocity * 0.5f;
         }
         animator.SetBool("Grounded", isGrounded);
+
+        if(time >= 1.0f)
+        {
+            time = 0f;
+            GameManager.instance.AddScore(10);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
